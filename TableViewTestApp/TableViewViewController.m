@@ -74,6 +74,9 @@ moveRowAtIndexPath:(NSIndexPath *)fromIndexPath
         if (toIndexPath.row > [self.dataController countOfList]) {
             [self.dataController.list insertObject:item atIndex:[self.dataController countOfList]];
         }
+        else if (toIndexPath.row < 1) {
+            [self.dataController.list insertObject:item atIndex:0];
+        }
         else {
             [self.dataController.list insertObject:item atIndex:toIndexPath.row-1];
         }
