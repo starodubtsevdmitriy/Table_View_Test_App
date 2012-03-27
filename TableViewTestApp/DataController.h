@@ -12,7 +12,6 @@
     NSMutableArray *list;
 }
 
-
 - (unsigned)countOfList; //returns number of elements in list    
 - (id)objectInListAtIndex:(unsigned)theIndex; //returns object at given index
 - (void)addData:(NSString*)data; //adds data to the list 

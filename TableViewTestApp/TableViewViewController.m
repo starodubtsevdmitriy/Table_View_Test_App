@@ -17,7 +17,7 @@
     return self;
 }
 
--(void)loadView {                                  // create and configure the view
+- (void)loadView {                                 // create and configure the view
     CGRect cgRct = CGRectMake(0, 0, 320, 400);     //define size and position of view 
     myView = [[UIView alloc] initWithFrame:cgRct]; //initilize the view    
     myView.autoresizesSubviews = YES;              //allow it to tweak size of elements in view 
