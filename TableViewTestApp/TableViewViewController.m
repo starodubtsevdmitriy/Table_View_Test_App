@@ -11,21 +11,21 @@
 @implementation TableViewViewController  
 
 @synthesize dataController = _dataController;
-@synthesize myView;
+@synthesize myView = _myView;
 
 - (id)initWithStyle:(UITableViewStyle)style {
     return self;
 }
 
-- (void)loadView {                                 // create and configure the view
-    CGRect cgRct = CGRectMake(0, 0, 320, 400);     //define size and position of view 
-    myView = [[UIView alloc] initWithFrame:cgRct]; //initilize the view    
-    myView.autoresizesSubviews = YES;              //allow it to tweak size of elements in view 
-    self.view = myView;                            //set view property of controller to the newly created view    
+- (void)loadView {                                 // Create and configure the view
+    CGRect cgRct = CGRectMake(0, 0, 320, 400);     // Define size and position of view 
+    myView = [[UIView alloc] initWithFrame:cgRct]; // Initilize the view    
+    myView.autoresizesSubviews = YES;              // Allow it to tweak size of elements in view 
+    self.view = myView;                            // Set view property of controller to the newly created view    
     UITableView * tableView = [[UITableView alloc] initWithFrame:cgRct style:UITableViewStylePlain];
-    tableView.editing = YES;                       //This allows user of progrm to add or remove elements from list
+    tableView.editing = YES;                       // This allows user of progrm to add or remove elements from list
     tableView.dataSource = self;
-    tableView.delegate = self;                     //make the current object the event handler for view
+    tableView.delegate = self;                     // Make the current object the event handler for view
     [self.view addSubview:tableView];
 }
 
@@ -40,22 +40,21 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView 
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellIdentifier"];//Try to get rusable cell
-    if (cell == nil)  {                            //If not possible create a new cell
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellIdentifier"];// Try to get rusable cell
+    if (cell == nil)  {                            // If not possible create a new cell
         cell = [[[UITableViewCell alloc] initWithFrame:CGRectMake(0,0,0,0) reuseIdentifier:@"CellIdentifier"]autorelease];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     if(indexPath.row == 0) {                        // Get the string to display and set the value in the cell
-        cell.text  = @"Add New Item...";                //The first (or zeroth cell) contains a New Item string and is used to add elements to list
-
+        cell.text  = @"Add New Item...";            // The first (or zeroth cell) contains a New Item string and is used to add elements to list
     }
-    else {                                          //Retreive text from datasource, the -1 accounts for the first element being hardcoded to say new Item
+    else {                                          // Retreive text from datasource, the -1 accounts for the first element being hardcoded to say new Item
         NSString* itemText = [self.dataController objectInListAtIndex:indexPath.row - 1]; 
         cell.text = itemText;
     }
     return cell;
 }
-                                                    //Disable reorder the first row
+                                                    // Disable reorder the first row
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         return NO;
@@ -64,7 +63,7 @@
         return YES;
     }
 }
-                                                    //Reordering of list
+                                                    // Reordering of list
 -  (void)tableView:(UITableView *)tableView        
 moveRowAtIndexPath:(NSIndexPath *)fromIndexPath
        toIndexPath:(NSIndexPath *)toIndexPath {
@@ -84,7 +83,7 @@ moveRowAtIndexPath:(NSIndexPath *)fromIndexPath
     }
     [tableView reloadData];
 }
-                                                   //Set style of cells      
+                                                   // Set style of cells      
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView 
            editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
     if(indexPath.row == 0) {
@@ -94,7 +93,7 @@ moveRowAtIndexPath:(NSIndexPath *)fromIndexPath
         return UITableViewCellEditingStyleDelete;
     }
 }
-                                                    //Add and delete cells
+                                                    // Add and delete cells
 - (void) tableView:(UITableView *)tableView 
 commitEditingStyle:(UITableViewCellEditingStyle)editingStyle 
  forRowAtIndexPath:(NSIndexPath *)indexPath {       // If row is deleted, remove it from the list. 
@@ -115,8 +114,7 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 
 - (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning];
-    // Release any cached data, images, etc that aren't in use.
+    [super didReceiveMemoryWarning];                 // Release any cached data, images, etc that aren't in use.
 }
 
 #pragma mark - View lifecycle

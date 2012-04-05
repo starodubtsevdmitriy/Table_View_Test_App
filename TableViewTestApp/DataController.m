@@ -14,7 +14,7 @@
 
 - (id)init {
     if (self = [super init]){
-        NSMutableArray *localList = [[NSMutableArray alloc] init]; //Instantiate list
+        NSMutableArray *localList = [[NSMutableArray alloc] init]; // Instantiate list
         self.list = localList;
         [localList release];
     }

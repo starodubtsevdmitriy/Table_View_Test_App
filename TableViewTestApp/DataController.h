@@ -12,10 +12,10 @@
     NSMutableArray *list;
 }
 
-- (unsigned)countOfList; //returns number of elements in list    
-- (id)objectInListAtIndex:(unsigned)theIndex; //returns object at given index
-- (void)addData:(NSString*)data; //adds data to the list 
-- (void)removeDataAtIndex:(unsigned)theIndex;
+- (unsigned)countOfList; // Returns number of elements in list    
+- (id)objectInListAtIndex:(unsigned)theIndex; // Returns object at given index
+- (void)addData:(NSString *)data; // Adds data to the list 
+- (void)removeDataAtIndex:(unsigned)theIndex; // Remove data from the list
 
 @property (nonatomic, copy, readwrite) NSMutableArray *list;
 
