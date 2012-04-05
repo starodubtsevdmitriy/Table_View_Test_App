@@ -14,17 +14,19 @@
 @synthesize window;
 @synthesize viewController;
 
+- (void)dealloc
+{
+    [window release];
+    [super dealloc];
+}
+
+
 - (void)applicationDidFinishLaunching:(UIApplication *)application { 
     viewController = [[TableViewViewController alloc]initWithStyle:UITableViewStylePlain];
     [window addSubview:viewController.view];
     [window makeKeyAndVisible];
 }
 
-- (void)dealloc
-{
-    [window release];
-    [super dealloc];
-}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

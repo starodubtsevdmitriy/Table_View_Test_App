@@ -46,7 +46,7 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     if(indexPath.row == 0) {                        // Get the string to display and set the value in the cell
-        cell.text  = @"New Item...";                //The first (or zeroth cell) contains a New Item string and is used to add elements to list
+        cell.text  = @"Add New Item...";                //The first (or zeroth cell) contains a New Item string and is used to add elements to list
 
     }
     else {                                          //Retreive text from datasource, the -1 accounts for the first element being hardcoded to say new Item
@@ -100,8 +100,7 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
  forRowAtIndexPath:(NSIndexPath *)indexPath {       // If row is deleted, remove it from the list. 
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.dataController removeDataAtIndex:indexPath.row-1];
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
-        withRowAnimation:UITableViewRowAnimationFade];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]withRowAnimation:UITableViewRowAnimationFade];
     }
     else if(editingStyle == UITableViewCellEditingStyleInsert) {
         NSString *newItem = [NSString stringWithFormat:@"New item %d", [self.dataController countOfList]+1];
